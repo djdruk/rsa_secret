@@ -16,12 +16,12 @@
 >zhangsandeiMac:secret zhangsan$ openssl dgst -verify ca.pub -sha256 -signature 1.sign 1.zip 
 
 <br/>
->/**
->* -------私钥签名-------<br/>
->@param plainData 明文<br/>
->@param privateKey 私钥文件<br/>
->@return 返回签名数据<br/>
->*/
+> /** <br/>
+> * -------私钥签名-------<br/>
+> @param plainData 明文<br/>
+> @param privateKey 私钥文件<br/>
+> @return 返回签名数据<br/>
+> */
 <br/>
 
 ```
@@ -29,7 +29,8 @@
 ```
 
 <br/>
-> /**<br/>
+
+> /** <br/>
 > * -------公钥校验签名-------<br/>
 > @param plainData 明文<br/>
 > @param signData 签名文件<br/>
@@ -40,9 +41,8 @@
 
 ```
 + (BOOL)verifyWithData:(NSData *)plainData signature:(NSData *)signData secKeyRef:(SecKeyRef)publicKey;
-
 ```
- <br/>
+<br/>
 
 > /** <br/>
 > * -------从文件读取公钥-------<br/>
@@ -54,11 +54,9 @@
 
 ```
 + (SecKeyRef)getPublicKeyRefWithContentsOfFile:(NSString *)filePath keySize:(size_t )size;
-
 ```
 
 <br/>
-
 > /** <br/>
 > * -------从文件读取私钥-------<br/>
 > @param filePath 文件路径<br/>
@@ -96,7 +94,7 @@
 ```
 
 ```object-c
-	NSString *pubpem = [[NSBundle mainBundle] pathForResource:@"ca.pub" ofType:nil];
+    NSString *pubpem = [[NSBundle mainBundle] pathForResource:@"ca.pub" ofType:nil];
     SecKeyRef publicKeyRef = [RSAcryptor getPublicKeyRefWithContentsOfFile:pubpem keySize:1024];
         
     NSString *pripem = [[NSBundle mainBundle] pathForResource:@"ca.key" ofType:nil];
