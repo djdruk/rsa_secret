@@ -29,13 +29,13 @@
 ```
 
 <br/>
->/**<br/>
->* -------公钥校验签名-------<br/>
->@param plainData 明文<br/>
->@param signData 签名文件<br/>
->@param publicKey 公钥文件<br/>
->@return 验签成功返回YES，失败返回NO<br/>
->*/
+> /**<br/>
+> * -------公钥校验签名-------<br/>
+> @param plainData 明文<br/>
+> @param signData 签名文件<br/>
+> @param publicKey 公钥文件<br/>
+> @return 验签成功返回YES，失败返回NO<br/>
+> */
 <br/>
 
 ```
@@ -44,7 +44,7 @@
 ```
  <br/>
 
->/** <br/>
+> /** <br/>
 > * -------从文件读取公钥-------<br/>
 > @param filePath 文件路径<br/>
 > @param size 文件大小<br/>
