@@ -16,12 +16,12 @@
 >zhangsandeiMac:secret zhangsan$ openssl dgst -verify ca.pub -sha256 -signature 1.sign 1.zip 
 
 <br/>
-> /** <br/>
-> * -------私钥签名-------<br/>
+> <br/>
+> -------私钥签名-------<br/>
 > @param plainData 明文<br/>
 > @param privateKey 私钥文件<br/>
 > @return 返回签名数据<br/>
-> */
+> 
 <br/>
 
 ```
