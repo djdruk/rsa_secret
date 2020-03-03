@@ -15,10 +15,88 @@
 公钥验签
 >zhangsandeiMac:secret zhangsan$ openssl dgst -verify ca.pub -sha256 -signature 1.sign 1.zip 
 
+<br/>
+>/**
+>* -------私钥签名-------<br/>
+>@param plainData 明文<br/>
+>@param privateKey 私钥文件<br/>
+>@return 返回签名数据<br/>
+>*/
+<br/>
 
+```
++ (NSData *)sianWithData:(NSData *)plainData secKeyRef:(SecKeyRef)privateKey;
+```
+
+<br/>
+>/**<br/>
+>* -------公钥校验签名-------<br/>
+>@param plainData 明文<br/>
+>@param signData 签名文件<br/>
+>@param publicKey 公钥文件<br/>
+>@return 验签成功返回YES，失败返回NO<br/>
+>*/
+<br/>
+
+```
++ (BOOL)verifyWithData:(NSData *)plainData signature:(NSData *)signData secKeyRef:(SecKeyRef)publicKey;
+
+```
+ <br/>
+
+>/** <br/>
+> * -------从文件读取公钥-------<br/>
+> @param filePath 文件路径<br/>
+> @param size 文件大小<br/>
+> @return 返回密钥<br/>
+> */
+<br/>
+
+```
++ (SecKeyRef)getPublicKeyRefWithContentsOfFile:(NSString *)filePath keySize:(size_t )size;
+
+```
+
+<br/>
+
+> /** <br/>
+> * -------从文件读取私钥-------<br/>
+> @param filePath 文件路径<br/>
+> @param password 文件密码<br/>
+> @return 返回密钥<br/>
+> */ 
+<br/>
+
+```
++ (SecKeyRef)getPrivateKeyRefWithContentsOfFile:(NSString *)filePath password:(NSString *)password;
+```
+
+<br/>
+> /** <br/>
+> * -------RSA 公钥加密-------<br/>
+> @param data 明文，待加密的数据<br/>
+> @param keyRef 公钥<br/>
+> @return 密文，加密后的数据<br/>
+> */ <br/>
+
+```
++ (NSData *)encryptData:(NSData *)data withKeyRef:(SecKeyRef)keyRef;
+```
+
+<br/>
+> /** <br/>
+> * -------RSA 私钥解密-------<br/>
+> @param data 密文，需要解密的数据<br/>
+> @param keyRef 私钥<br/>
+> @return 明文，解密后的字符串<br/>
+> */<br/>
+
+```
++ (NSData *)decryptData:(NSData *)data withKeyRef:(SecKeyRef) keyRef;
+```
 
 ```object-c
-    NSString *pubpem = [[NSBundle mainBundle] pathForResource:@"ca.pub" ofType:nil];
+	NSString *pubpem = [[NSBundle mainBundle] pathForResource:@"ca.pub" ofType:nil];
     SecKeyRef publicKeyRef = [RSAcryptor getPublicKeyRefWithContentsOfFile:pubpem keySize:1024];
         
     NSString *pripem = [[NSBundle mainBundle] pathForResource:@"ca.key" ofType:nil];
