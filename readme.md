@@ -16,8 +16,9 @@ writing RSA key
 >zhangsandeiMac:secret zhangsan$ openssl dgst -verify ca.pub -sha256 -signature 1.sign 1.zip 
 Verified OK
 
+
 ```object-c
-	NSString *pubpem = [[NSBundle mainBundle] pathForResource:@"ca.pub" ofType:nil];
+    NSString *pubpem = [[NSBundle mainBundle] pathForResource:@"ca.pub" ofType:nil];
     SecKeyRef publicKeyRef = [RSAcryptor getPublicKeyRefWithContentsOfFile:pubpem keySize:1024];
         
     NSString *pripem = [[NSBundle mainBundle] pathForResource:@"ca.key" ofType:nil];
